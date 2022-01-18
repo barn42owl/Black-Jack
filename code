@@ -1,0 +1,126 @@
+#The deck is unlimited in size
+#There are no jokers
+#The Jack(Queen(King)) all count 10
+#the Ace can count as 11(if you are over 21) or 1.
+#the cards in the list have equal probability to be drawn
+#cards are not removed from the deck as they are drawn
+
+import random
+
+cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
+score_player = 0
+score_pc = 1
+another_card = "yes"
+
+
+#Block purple:
+def purple_block():
+    if score_player < score_pc:
+        print("You win.")
+    else:
+        print("You lose")
+
+
+#purple_block()
+
+
+#Block Green:
+def green_block():
+    #score_player = 0
+    #score_pc = 1
+    while score_player < score_pc:
+        #player_cards=[]
+        #pc_cards=[]
+        #randomly pick one card for player
+        random_card = random.choice(cards)
+        player_cards.append(random_card)
+
+        #print(player_cards)
+        #card_values in separat variable
+        next_card_player = int(player_cards[2])
+        #print(next_card_player)
+        #first_card_pc=int(pc_cards[0])
+        #print(first_card_pc)
+        #second_card_pc=int(pc_cards[1])
+        #print(second_card_pc)
+
+        #calculate score of player and pc
+        new_score_player = first_card_player+second_card_player+next_card_player
+        #print(score_player)
+        score_pc = first_card_pc + second_card_pc
+        #print(score_pc)
+
+        #display both cards of player and first card of pc
+        print(
+            f"You recieved the card {next_card_player}.Your new score is {new_score_player}."
+        )
+
+
+#green_block()
+
+
+#Block Yellow:
+def yellow_block():
+    score_player = 0
+    score_pc = 1
+    while score_player < score_pc:
+        player_cards = []
+        pc_cards = []
+        #randomly pick two cards for player and pc
+        t = 0
+        while t < 2:
+            random_card = random.choice(cards)
+            player_cards.append(random_card)
+            t = t + 1
+
+        d = 0
+        while d < 2:
+            random_card = random.choice(cards)
+            pc_cards.append(random_card)
+            d = d + 1
+
+
+#print(player_cards)
+#print(pc_cards)
+
+#card_values in separat variable
+        first_card_player = int(player_cards[0])
+        #print(first_card_player)
+        second_card_player = int(player_cards[1])
+        #print(second_card_player)
+
+        first_card_pc = int(pc_cards[0])
+        #print(first_card_pc)
+        second_card_pc = int(pc_cards[1])
+        #print(second_card_pc)
+
+        #calculate score of player and pc
+        score_player = first_card_player + second_card_player
+        #print(score_player)
+        score_pc = first_card_pc + second_card_pc
+        #print(score_pc)
+
+        #display both cards of player and first card of pc
+        print(
+            f"You recieve the cards {first_card_player} and {second_card_player}. Your score is {score_player}. The first card of pc is {first_card_pc}."
+        )
+    return score_player, score_pc, player_cards
+
+def play():
+    if input("Do you want to play? ") == "yes":
+        yellow_block
+
+        #check is player score>pc score
+        if score_player > 21:
+            print("You lose.")
+
+        else:
+            if input("Type 'yes'if you want to have another card? ") == "yes":
+                green_block
+            else:
+                print("You win.")
+    else:
+        purple_block
+
+
+play()
